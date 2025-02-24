@@ -41,3 +41,6 @@ base + geom_density()
 # A: There is no rule of Bin, depand of situation and what we would like to see
 #    But 30 is a good start
 base + geom_histogram(bins = 30)
+
+# setting fill and color
+base + geom_histogram(bins = 30, fill = "red", color = "black")
