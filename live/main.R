@@ -44,3 +44,44 @@ base + geom_histogram(bins = 30)
 
 # setting fill and color
 base + geom_histogram(bins = 30, fill = "red", color = "black")
+
+# discrete variable = non-numeric = factor
+# one variable, not number
+# e.g. cut, color, clarity in diamonds dataset
+ggplot(
+  data = diamonds,
+  mapping = aes(x = cut)
+) +
+  geom_bar()
+
+ggplot(
+  data = diamonds,
+  mapping = aes(x = clarity)
+) +
+  geom_bar()
+
+# setting fill and alpha
+ggplot(
+  data = diamonds,
+  mapping = aes(x = color)
+) +
+  geom_bar(fill = "salmon", aplha = 0.8)
+
+# What is different between mapping and setting?
+# mapping is to tell ggplot how to map variables to visual properties
+# setting is to tell ggplot how to set the visual properties
+
+# use cut as fill color
+Base2 <- ggplot(
+  data = diamonds,
+  mapping = aes(x = cut)
+)
+
+Base2 +
+  geom_bar(
+    mapping = aes(fill = cut),
+    alpha = 0.6
+  )
+
+# two variables, number x number
+# scatter plot (statistician love this)
