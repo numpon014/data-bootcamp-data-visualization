@@ -137,3 +137,80 @@ ggplot(mtcars, aes(hp, mpg)) +
   geom_point() +
   geom_smooth() +
   geom_rug()
+
+# show ribbon in the chart to show the confidence interval
+# - se = TRUE
+mtcars %>%
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess",
+              se = TRUE,
+              fill = "gold",
+              color = "red") +
+  theme_minimal()
+
+
+  ## add labels to chart
+  labs(title = "Scatter Plot HP x MPG",
+       subtitle = "Positive relationship between two variables",
+       caption = "Data Source: mtcars dataframe",
+       x = "horse power",
+       y = "mile per gallon")
+
+
+## add labels to chart
+mtcars %>%
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess",
+              se = TRUE,
+              fill = "gold",
+              color = "red") +
+  theme_minimal() +
+  labs(title = "Scatter Plot HP x MPG",
+     subtitle = "Positive relationship between two variables",
+     caption = "Data Source: mtcars dataframe",
+     x = "horse power",
+     y = "mile per gallon")
+
+## Filter data
+mtcars %>%
+  filter(hp < 130, mpg > 16) %>%
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess",
+              se = TRUE,
+              fill = "gold",
+              color = "red") +
+  theme_minimal() +
+  labs(title = "Scatter Plot HP x MPG",
+       subtitle = "Positive relationship between two variables",
+       caption = "Data Source: mtcars dataframe",
+       x = "horse power",
+       y = "mile per gallon")
+
+# Adjust style
+# - no ribbon
+# - no fill
+mtcars %>%
+  filter(hp < 130, mpg > 16) %>%
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess",
+              se = F,
+              color = "red") +
+  theme_minimal() +
+  labs(title = "Scatter Plot HP x MPG",
+       subtitle = "Positive relationship between two variables",
+       caption = "Data Source: mtcars dataframe",
+       x = "horse power",
+       y = "mile per gallon")
+
+# dplyr + ggplot
+diamonds %>%
+  filter(carat >= 0.5,
+         price >= 4000,
+         cut == "Ideal") %>%
+  count(clarity) %>%
+  ggplot(aes(clarity, n)) +
+  geom_col()
