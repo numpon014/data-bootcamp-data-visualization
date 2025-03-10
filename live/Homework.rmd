@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Homework
+
+## Favorite Foods
+
+- Hamburgers
+- Hot Dogs
+
+- French Fries
+
+## Histogram
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+ggplot(
+  mtcars, aes(hp)
+) +
+  geom_histogram(bins = 5)
+```
